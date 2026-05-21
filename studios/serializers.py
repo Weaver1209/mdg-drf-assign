@@ -4,4 +4,4 @@ from .models import Studio
 class StudioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Studio
-        fields = ['id', 'name', 'description', 'created_at'] 1
+        fields = ['id', 'name', 'description', 'created_at'] 
