@@ -6,6 +6,6 @@ class Studio(models.Model):
     description = models.TextField(blank= True,null = True)
     created_at = models.DateTimeField(auto_now_add = True)
 
-        def __str__(self):
+    def __str__(self):
             return self.name
 
