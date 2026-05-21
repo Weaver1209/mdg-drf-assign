@@ -18,3 +18,14 @@ class Tag(models.Model):
         return self.name  #whenever we print any of the object of this class it will simply print it's name
     class Meta: 
         ordering = ['name']  #means queries return the tags in a sorted order on the basis of the name
+
+class Comment(models.Model):
+        
+        author = models.ForeignKey(User,on_delete=models.CASCADE,related_name='comments') #linking the comments with the user data table
+        parent = models.ForeignKey('self',on_delete=models.CASCADE,null=True,blank=True,related_name='replies') #there can be replies for some comments so we are linking those replies with a parent comment
+        content = models.TextField()
+        created_at = models.DateTimeField(auto_now_add=True)
+        updated_at = models.DateTimeField(auto_now=True)
+
+        def __str__(self):
+             return f"Comment by {self.author.name}"
