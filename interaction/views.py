@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import Tag,Comment
-from .serializers import TagSerializer,CommentSerializer
+from .models import Tag,Comment,Attachment
+from .serializers import TagSerializer,CommentSerializer,AttachmentSerializer
 from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 class TagViewSet(viewsets.ModelViewSet):
@@ -13,3 +13,7 @@ class CommentViewSet(viewsets.ModelViewSet):
      #on receiving the request initializing the author of the comment as the user 
      def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+
+class AttachmentViewSet(viewsets.ModelViewSet):
+      queryset = Attachment.objects.all()
+      serializer_class = AttachmentSerializer

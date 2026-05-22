@@ -29,3 +29,26 @@ class Comment(models.Model):
 
         def __str__(self):
              return f"Comment by {self.author.username}"
+        
+class Attachment(models.Model): 
+      
+      #first linking the attachment to a particular user 
+      uploaded_by = models.ForeignKey(User,null=True,on_delete=models.SET_NULL,related_name='attachments') #when the user is deleted we don't want the files also to be deleted we will just set the uploaded_by to NULL
+      
+      label = models.CharField( max_length=100, blank=True)
+      
+      file_size = models.PositiveIntegerField(null=True,blank=True)
+      
+      #any attachment has a particular file_type
+      file_type = models.CharField(max_length=20,choices= [
+        ('image', 'Image'),
+        ('video', 'Video'),
+        ('document', 'Document'),
+        ('other', 'Other'),
+        ],
+        default='other')  
+      
+      created_at = models.DateTimeField(auto_now_add=True)
+
+      def __str__(self):
+           return self.label
