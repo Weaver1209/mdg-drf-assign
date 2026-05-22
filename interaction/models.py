@@ -52,3 +52,22 @@ class Attachment(models.Model):
 
       def __str__(self):
            return self.label
+      
+class Notification(models.Model):
+           
+           receiver = models.ForeignKey(User, on_delete=models.CASCADE,related_name='notifications')
+           
+           notification_type = models.CharField(max_length=50,choices= [
+                                                    ('comment_added', 'Comment Added'),
+                                                    ('task_assigned', 'Task Assigned'),
+                                                    ('status_changed', 'Status Changed'),
+                                                    ('review_requested', 'Review Requested'),
+                                                    ])
+           message = models.TextField()
+
+           is_read = models.BooleanField(default = False)
+           
+           created_at = models.DateTimeField(auto_now_add=True)
+
+           def __str__(self):
+                 return f"Notification for {self.receiver.username}"
