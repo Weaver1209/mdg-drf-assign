@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import Tag,Comment,Attachment
-from .serializers import TagSerializer,CommentSerializer,AttachmentSerializer
+from .models import Tag,Comment,Attachment,Notification
+from .serializers import TagSerializer,CommentSerializer,AttachmentSerializer,NotificationSerializer
 from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 class TagViewSet(viewsets.ModelViewSet):
@@ -17,3 +17,7 @@ class CommentViewSet(viewsets.ModelViewSet):
 class AttachmentViewSet(viewsets.ModelViewSet):
       queryset = Attachment.objects.all()
       serializer_class = AttachmentSerializer
+
+class NotificationViewSet(viewsets.ModelViewSet):
+      queryset = Notification.objects.all()
+      serializer_class = NotificationSerializer
