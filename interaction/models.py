@@ -29,7 +29,8 @@ class Comment(models.Model):
 
         def __str__(self):
              return f"Comment by {self.author.username}"
-        
+def upload_path(attachment, filename):
+    return f"attachments/task_{attachment.task_id}/{filename}"        
 class Attachment(models.Model): 
       
       #first linking the attachment to a particular user 
@@ -51,8 +52,8 @@ class Attachment(models.Model):
       created_at = models.DateTimeField(auto_now_add=True)
       
       #to connect this attachment to a particular task with foreign key, will later connect once the task model will be created
-      task_id = models.IntegerField()
-      file  = models.FileField(upload_to= lambda attachment,filename: f"attachments/task_{attachment.task_id}/{filename}") #Filefield is used to store the uploaded files and the store the path of the file in your database 
+      task_id = models.IntegerField(null=True,blank=True)
+      file  = models.FileField(upload_to= upload_path,null = True,blank=True) #Filefield is used to store the uploaded files and the store the path of the file in your database 
 
 
       def __str__(self):
