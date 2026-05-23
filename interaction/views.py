@@ -30,7 +30,9 @@ class AttachmentViewSet(viewsets.ModelViewSet):
       def perform_create(self, serializer):
            serializer.save(uploaded_by = self.request.user)
 class NotificationViewSet(viewsets.ModelViewSet):
-      queryset = Notification.objects.all()
+      #not fetching all the notifications only fetching those related to the user and sorting them on the basis of the date of creation in a descending order 
+      def get_queryset(self):
+           return Notification.objects.filter(receiver = self.request.user).order_by('-created_at')
       serializer_class = NotificationSerializer
       permission_classes = [IsAuthenticated]
       
