@@ -49,6 +49,11 @@ class Attachment(models.Model):
         default='other')  
       
       created_at = models.DateTimeField(auto_now_add=True)
+      
+      #to connect this attachment to a particular task with foreign key, will later connect once the task model will be created
+      task_id = models.IntegerField()
+      file  = models.FileField(upload_to= lambda attachment,filename: f"attachments/task_{attachment.task_id}/{filename}") #Filefield is used to store the uploaded files and the store the path of the file in your database 
+
 
       def __str__(self):
            return self.label
@@ -66,7 +71,7 @@ class Notification(models.Model):
            message = models.TextField()
 
            is_read = models.BooleanField(default = False)
-           
+
            created_at = models.DateTimeField(auto_now_add=True)
 
            def __str__(self):
