@@ -1,7 +1,9 @@
 from rest_framework import viewsets
 from .models import Tag,Comment,Attachment,Notification
 from .serializers import TagSerializer,CommentSerializer,AttachmentSerializer,NotificationSerializer
+
 from rest_framework.permissions import IsAuthenticated
+
 from rest_framework.parsers import MultiPartParser, FormParser #we need them as endpoint accept data in the form of json data only but here the user can even upload files so we need some special parsers
 
 # Create your views here.
@@ -31,5 +33,6 @@ class NotificationViewSet(viewsets.ModelViewSet):
       queryset = Notification.objects.all()
       serializer_class = NotificationSerializer
       permission_classes = [IsAuthenticated]
+      
       def perform_create(self, serializer):
            serializer.save(receiver =self.request.user)

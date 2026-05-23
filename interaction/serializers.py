@@ -3,7 +3,7 @@ from .models import Tag,Comment,Attachment,Notification
 class TagSerializer(serializers.ModelSerializer):
         class Meta:
                 model = Tag
-                fields = "__all__"  
+                fields = "__all__" 
 class CommentSerializer(serializers.ModelSerializer):
         class Meta:
                 model = Comment
