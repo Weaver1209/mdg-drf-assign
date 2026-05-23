@@ -1,9 +1,14 @@
 from rest_framework.permissions import BasePermission
-from models.py import StudioMembership
+from .models import StudioMembership
 
 class IsStudioMember(BasePermission):
-    def have_permission(self,request,view):
+    def has_permission(self,request,view):
         studio_id = view.kwargs.get('studio_id')
+       if not studio_id:
+            studio_id = view.kwargs.get('pk')
+            
+        if not studio_id:
+            return True 
 
         return StudioMembership.objects.filter(
             user=request.user, 
@@ -11,9 +16,14 @@ class IsStudioMember(BasePermission):
         ).exists()
 
 class IsAdminOrLead(BasePermission):
-    def have_permission(self,request,view):
-        studio_id = view.kwargs.get('studio_id')
 
+    def has_permission(self,request,view):
+        studio_id = view.kwargs.get('studio_id')
+        if not studio_id:
+            studio_id = view.kwargs.get('pk') # Fallback for top-level studio URLs
+            
+        if not studio_id:
+            return True
         return StudioMembership.objects.filter(
             user=request.user,
             studio_id=studio_id,
