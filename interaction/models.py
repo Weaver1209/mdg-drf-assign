@@ -21,6 +21,7 @@ class Tag(models.Model):
 
 class Comment(models.Model):
         
+        task_id = models.IntegerField()
         author = models.ForeignKey(User,on_delete=models.CASCADE,related_name='comments') #linking the comments with the user data table
         parent = models.ForeignKey('self',on_delete=models.CASCADE,null=True,blank=True,related_name='replies') #there can be replies for some comments so we are linking those replies with a parent comment
         content = models.TextField()
