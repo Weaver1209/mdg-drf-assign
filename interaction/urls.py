@@ -7,7 +7,7 @@ router = DefaultRouter()
 router.register(r'tags',TagViewSet)
 router.register(r'comments',CommentViewSet)
 router.register(r'attachments',AttachmentViewSet)
-router.register(r'notifications',NotificationViewSet)
+router.register(r'notifications',NotificationViewSet, basename='notification')
 urlpatterns = [
     path('',include(router.urls)),
 ]
