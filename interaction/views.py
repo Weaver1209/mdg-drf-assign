@@ -45,6 +45,8 @@ class AttachmentViewSet(viewsets.ModelViewSet):
       
       parser_classes = [MultiPartParser, FormParser] #with the help of this the endpoint can accept different files not only json objects only
       
+      filter_backends = [DjangoFilterBackend]
+      filterset_fields = ['task_id']
 
       def perform_create(self, serializer):
            serializer.save(uploaded_by = self.request.user)

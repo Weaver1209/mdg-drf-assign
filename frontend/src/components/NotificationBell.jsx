@@ -10,12 +10,12 @@ export default function NotificationBell() {
         setNotifications(res.data);
     }
 
-    useState(() => {
+    useEffect(() => {
         fetchNotifications();
     },[]);
 
-    
-    const markAsRead = async () => {
+
+    const markAsRead = async (id) => {
         await api.patch(`/notifications/${id}/mark_as_read/`);
         fetchNotifications();
     }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../api';
+import TaskDetail from './TaskDetail';
 
 export default function TaskBoard() {
   //fetching the studioId and projectId from the URL
@@ -8,7 +9,7 @@ export default function TaskBoard() {
   
   //creating different states for fetching of the tasks
   const [tasks, setTasks] = useState([]); //list of the task from the backend
-  const [selectedTask, setSelectedTask] = useState(null); // task user clicked
+  const [selectedTask, setSelectedTask] = useState(null); // task which user clicked
   const [loading, setLoading] = useState(false); //while API is loading
   
   const [error, setError] = useState(''); //to show any error message

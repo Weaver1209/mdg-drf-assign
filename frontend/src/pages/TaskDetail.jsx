@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import api from '../api';
+import CommentSection from '../components/CommentSection';
+import AttachmentList from '../components/AttachmentList';
 
 const STAGES = ['DRAFT', 'REVIEW', 'REVISION', 'APPROVED', 'COMPLETED'];  //different stages for the task
 
@@ -35,13 +37,14 @@ export default function TaskDetail({ task, studioId, projectId, onTaskUpdated}) 
       {/* For selection of new stage  */}
       <label>Stage</label>
       <select value={stage} onChange={(e) => updateStage(e.target.value)}>
-        {stages.map((item) => (
+        {STAGES.map((item) => (
           <option key={item} value={item}>
             {item}
           </option>
         ))}
       </select>
-
+      <CommentSection taskId={task.id} />
+      <AttachmentList taskId={task.id} />
 
     </div>
   );
