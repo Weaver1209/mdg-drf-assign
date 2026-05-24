@@ -1,15 +1,23 @@
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import api from '../api';
 import CommentSection from '../components/CommentSection';
 import AttachmentList from '../components/AttachmentList';
-
-const STAGES = ['DRAFT', 'REVIEW', 'REVISION', 'APPROVED', 'COMPLETED'];  //different stages for the task
+const STAGES = {
+    DRAFT: ['REVIEW'],
+    REVIEW: ['REVISION', 'APPROVED'],
+    REVISION: ['REVIEW'],
+    APPROVED: ['COMPLETED'],
+    COMPLETED: []
+};  //different stages for the task
 
 export default function TaskDetail({ task, studioId, projectId, onTaskUpdated}) {
 
     const [stage, setStage] = useState(task.stage); 
     const [error, setError] = useState('');
-
+    
+    useEffect(() => {
+        setStage(task.stage);
+    }, [task]);
     //function for updating the stage of the task
     const updateStage = async (newStage) => {
         setStage(newStage);
@@ -37,11 +45,16 @@ export default function TaskDetail({ task, studioId, projectId, onTaskUpdated}) 
       {/* For selection of new stage  */}
       <label>Stage</label>
       <select value={stage} onChange={(e) => updateStage(e.target.value)}>
-        {STAGES.map((item) => (
-          <option key={item} value={item}>
-            {item}
+          <option value={stage}>
+              {stage}
           </option>
-        ))}
+
+          {STAGES[stage]?.map((item) => (
+              <option key={item} value={item}>
+                  {item}
+              </option>
+          ))}
+
       </select>
       <CommentSection taskId={task.id} />
       <AttachmentList taskId={task.id} />
