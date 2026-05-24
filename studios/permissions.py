@@ -4,7 +4,7 @@ from .models import StudioMembership
 class IsStudioMember(BasePermission):
     def has_permission(self,request,view):
         studio_id = view.kwargs.get('studio_id')
-       if not studio_id:
+        if not studio_id:
             studio_id = view.kwargs.get('pk')
             
         if not studio_id:

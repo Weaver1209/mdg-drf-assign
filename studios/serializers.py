@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Studio,StudioMembership
-from db.contrib.auth.models import User
+from django.contrib.auth.models import User
 
 class StudioSerializer(serializers.ModelSerializer):
     class Meta:

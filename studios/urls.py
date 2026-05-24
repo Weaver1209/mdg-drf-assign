@@ -4,7 +4,7 @@ from .views import UserViewSet, StudioViewSet, StudioMembershipViewSet
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
-router.register(r'studios', StudioViewSet)
+router.register(r'studios', StudioViewSet,basename='studio')
 
 router.register(r'studios/(?P<studio_id>[^/.]+)/members', StudioMembershipViewSet, basename='studio-members')
 

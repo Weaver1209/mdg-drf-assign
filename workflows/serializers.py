@@ -1,4 +1,4 @@
-from .models import Project,Task
+from .models import Project,Task, WorkflowStage
 from rest_framework import serializers
 
 VALID_TRANSITIONS = {

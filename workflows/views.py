@@ -2,7 +2,7 @@ from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from studios.models import StudioMembership
-from studios.permissions import IsStudioMember, IsStudioAdminOrLead
+from studios.permissions import IsStudioMember, IsAdminOrLead
 from .models import Project, Task, WorkflowStage
 from .serializers import ProjectSerializer, TaskSerializer
 
@@ -12,7 +12,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
     def get_permissions(self):
         if self.action in ['list', 'retrieve']:
             return [IsAuthenticated(), IsStudioMember()]
-        return [IsAuthenticated(), IsStudioAdminOrLead()]
+        return [IsAuthenticated(), IsAdminOrLead()]
 
     def get_queryset(self):
         studio_id = self.kwargs.get('studio_id')
