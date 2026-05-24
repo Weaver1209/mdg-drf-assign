@@ -28,7 +28,7 @@ export default function CommentSection({ taskId }) {
       <h3>Comments</h3>
 
       {comments.map((comment) => (
-        <div key={comment.id}>
+        <div key={comment.id}  className="comment-box">
           <p>{comment.content}</p>
         </div>
       ))}

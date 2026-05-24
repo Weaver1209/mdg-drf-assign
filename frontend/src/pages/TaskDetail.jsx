@@ -33,7 +33,7 @@ export default function TaskDetail({ task, studioId, projectId, onTaskUpdated}) 
         } 
     };
     return (
-    <div>
+    <div className="task-detail">
       {/* Task Info */}
       <h2>{task.title}</h2>
       <p>{task.description}</p>

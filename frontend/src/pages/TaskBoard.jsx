@@ -62,7 +62,7 @@ export default function TaskBoard() {
         {tasks.length === 0 && !loading && <p>No tasks yet.</p>}
 
         {tasks.map((task) => (
-        <div key={task.id} onClick={() => setSelectedTask(task)}>
+        <div key={task.id} className="task-card" onClick={() => setSelectedTask(task)}>
             <h3>{task.title}</h3>
             <p>{task.description}</p>
             <p>Stage: {task.stage}</p>

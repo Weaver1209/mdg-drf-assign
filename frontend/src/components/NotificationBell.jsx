@@ -20,14 +20,24 @@ export default function NotificationBell() {
         fetchNotifications();
     }
     return (
-    <div>
-      <button onClick={() => setOpen(!open)}>
-        Notifications 
-      </button>
+    <div className="notification-wrapper">
+    <button onClick={() => setOpen(!open)}>
+        Notifications (
+            {notifications.filter(
+                (item) => !item.is_read
+            ).length}
+        )
+    </button>
 
-      {open && ( <div>
+      {open && ( <div className="notification-dropdown">
+            {notifications.length === 0 && (
+            <p>No notifications yet</p>
+             )}
+
           {notifications.map((notification) => (
-            <div key={notification.id}>
+            <div key={notification.id}     style={{
+        backgroundColor: notification.is_read ? '#f5f5f5' : '#dbeafe', padding: '8px',marginBottom: '5px',borderRadius: '5px'
+    }}>
               <p>{notification.message}</p>
               <p>{notification.notification_type}</p>
 
