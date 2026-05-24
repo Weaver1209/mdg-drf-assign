@@ -5,7 +5,6 @@ from db.contrib.auth.models import User
 class StudioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Studio
-<<<<<<< HEAD
         fields = ['id', 'name', 'description', 'created_at']
 class StudioMembershipSerializer(serializers.ModelSerializer):
     username = serializers.ReadOnlyField(source = 'user.username')
@@ -17,6 +16,3 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'username', 'password']
         extra_kwargs = {'password': {'write_only': True}}
-=======
-        fields = ['id', 'name', 'description', 'created_at'] 
->>>>>>> stun
