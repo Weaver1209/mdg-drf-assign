@@ -1,0 +1,247 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  color: #1f2937;
+  background: #eef2f7;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  line-height: 1.5;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, #f8fafc 0%, #eef2f7 42%, #e8eef6 100%);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #ffffff;
+  background: #2563eb;
+  cursor: pointer;
+  font-weight: 700;
+  transition:
+    background 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+button:hover {
+  background: #1d4ed8;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: #111827;
+  background: #ffffff;
+  outline: none;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+}
+
+textarea {
+  min-height: 92px;
+  resize: vertical;
+}
+
+label {
+  display: block;
+  margin: 16px 0 6px;
+  color: #475569;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h2 {
+  color: #0f172a;
+  font-size: 1.45rem;
+  line-height: 1.2;
+}
+
+h3 {
+  color: #1e293b;
+  font-size: 1.05rem;
+}
+
+p {
+  color: #475569;
+}
+
+a {
+  color: #2563eb;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#root {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 56px;
+}
+
+#root::before {
+  display: block;
+  margin-bottom: 22px;
+  color: #0f172a;
+  content: "Task Workspace";
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+#root > p {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  margin: 0 0 18px;
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+}
+
+#root > p:not(:first-of-type) {
+  color: #b45309;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+}
+
+#root > div {
+  margin-bottom: 16px;
+  border: 1px solid #dbe3ef;
+  border-radius: 8px;
+  padding: 18px;
+  background: #ffffff;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+}
+
+#root > div:hover {
+  border-color: #bfdbfe;
+}
+
+#root > div > h3 {
+  margin-bottom: 8px;
+}
+
+#root > div > p {
+  margin-bottom: 6px;
+}
+
+#root > form,
+#root form {
+  display: grid;
+  gap: 12px;
+  margin: 18px 0;
+  border: 1px solid #dbe3ef;
+  border-radius: 8px;
+  padding: 18px;
+  background: #ffffff;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+}
+
+#root > form::before {
+  color: #0f172a;
+  content: "Create task";
+  font-size: 1.08rem;
+  font-weight: 800;
+}
+
+#root > form button,
+#root form button {
+  width: fit-content;
+}
+
+#root > div:last-child {
+  margin-top: 22px;
+  border-color: #bfdbfe;
+  background: #f8fbff;
+}
+
+#root > div:last-child > div {
+  margin-top: 18px;
+  border: 1px solid #dbe3ef;
+  border-radius: 8px;
+  padding: 16px;
+  background: #ffffff;
+}
+
+#root > div:last-child > div h3 {
+  margin-bottom: 12px;
+}
+
+#root > div:last-child > div > div {
+  margin-bottom: 10px;
+  border-left: 3px solid #2563eb;
+  border-radius: 6px;
+  padding: 10px 12px;
+  background: #f8fafc;
+}
+
+@media (max-width: 640px) {
+  #root {
+    width: min(100% - 20px, 1120px);
+    padding-top: 22px;
+  }
+
+  #root::before {
+    font-size: 1.55rem;
+  }
+
+  #root > div,
+  #root > form,
+  #root form {
+    padding: 14px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  #root > form button,
+  #root form button {
+    width: 100%;
+  }
+}
