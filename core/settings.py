@@ -138,3 +138,4 @@ REST_FRAMEWORK = {
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
+CSRF_TRUSTED_ORIGINS = ['http://localhost:5173']

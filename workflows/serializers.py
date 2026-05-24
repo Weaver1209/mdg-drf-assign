@@ -12,8 +12,8 @@ VALID_TRANSITIONS = {
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
-        fields = ['id', 'studio', 'name', 'description', 'created_by', 'created_at']
-        read_only_fields = ['created_by']
+        fields = ['id', 'name', 'description', 'created_at']
+        read_only_fields = ['created_at'] 
 
 
 class TaskSerializer(serializers.ModelSerializer):
