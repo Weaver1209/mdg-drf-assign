@@ -93,7 +93,15 @@ export default function TaskBoard() {
 
         <button type="submit">Create Task</button>
         </form>
-
+        
+        {/*if any of the task is selected then we will call the taskdetail then asking the other page to return a task detail by passing some properties or props*/}
+        {selectedTask && ( <TaskDetail
+          task={selectedTask} //passing the entire task object
+          studioId={studioId} //passing it's studio and project id will help in building the url
+          projectId={projectId}
+          onTaskUpdated={fetchTasks}  //passing this so that taskdetail.jsx can update the state 
+        />
+      )}   
     </>
 
   );
