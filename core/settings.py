@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'studios',
     'workflows'
+    'interaction',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -121,5 +123,18 @@ STATIC_URL = 'static/'
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+
+        'django_filters.rest_framework.DjangoFilterBackend',
+
+        'rest_framework.filters.SearchFilter',
+
+        'rest_framework.filters.OrderingFilter',
     ]
 }
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = BASE_DIR / 'media'
