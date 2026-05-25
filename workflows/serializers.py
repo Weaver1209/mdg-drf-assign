@@ -35,3 +35,13 @@ class TaskSerializer(serializers.ModelSerializer):
                     )
         
         return data
+    def validate_assignee(self, value):
+        if value:
+            project_id = self.instance.project_id if self.instance else self.initial_data.get('project')
+            project = Project.objects.get(id=project_id)
+            membership = StudioMembership.objects.filter(user=value, studio=project.studio).first()
+            if not membership:
+                raise serializers.ValidationError("This user is not a member of this studio.")
+            if membership.role == 'VIEWER':
+                raise serializers.ValidationError("Cannot assign tasks to a Client Viewer.")
+        return value

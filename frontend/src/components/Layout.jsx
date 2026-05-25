@@ -41,13 +41,13 @@ export default function Layout() {
         </div>
       </div>
 
-      <div className="main-content" style={{ position: 'relative' }}>
-  <div style={{ position: 'absolute', top: '20px', right: '32px' }}>
-    <NotificationBell />
-  </div>
-  
-  <Outlet /> 
-</div>
+            <div className="main-content">
+        <div >
+          <NotificationBell />
+        </div>
+        <Outlet /> 
+      </div>
     </div>
   );
 }
+    
