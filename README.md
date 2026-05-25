@@ -1,7 +1,7 @@
 # b29-drf-assgn: Creative Studio Workflow System
 
 A full-stack workflow management system designed for creative studios to manage projects and tasks with team isolation and Role-Based Access Control (RBAC).
-
+check the deployed project at https://mdg-drf-assign.vercel.app/
 ## Technology Stack
 
 * **Backend**: Django REST Framework (DRF), Django Filters
