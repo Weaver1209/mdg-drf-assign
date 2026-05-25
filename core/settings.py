@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-u8mu1*1pkw6a*6w*50)lxe3ns+!eyhgqngsje9w72)xfzbixyk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['studio-workflow-api.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
