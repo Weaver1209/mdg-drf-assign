@@ -5,7 +5,7 @@ from studios.models import Studio
 from workflows.models import Task
 # Create your models here.
 class Tag(models.Model):
-    name = models.CharField(max_length=50,unique = True) #charfield where two different tags can have same name
+    name = models.CharField(max_length=50) #charfield where two different tags can have same name
     color = models.CharField(max_length=7,default="#ffffff") # to assign a colour to a particular tag having by default whtie colour 
     
     
@@ -19,7 +19,7 @@ class Tag(models.Model):
         return self.name  #whenever we print any of the object of this class it will simply print it's name
     class Meta: 
         ordering = ['name']  #means queries return the tags in a sorted order on the basis of the name
-
+        unique_together = ('name', 'studio')
 class Comment(models.Model):
         
         task_id = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='comments',null=True, blank=True)

@@ -41,11 +41,12 @@ class TaskViewSet(viewsets.ModelViewSet):
     ordering_fields = ['created_at', 'deadline', 'priority', 'stage']
 
     def get_permissions(self):
-        return [IsAuthenticated(), IsStudioMember()]
+        return [IsAuthenticated(), IsStudioMemberOrViewerReadOnly()]
 
     def get_queryset(self):
         project_id = self.kwargs.get('project_id')
-        return Task.objects.filter(project_id=project_id)
+        project__studio_id = self.kwargs.get('studio_id')
+        return Task.objects.filter(project_id=project_id,project__studio_id = project__studio_id)
 
     def perform_create(self, serializer):
         serializer.save(project_id=self.kwargs.get('project_id'))
