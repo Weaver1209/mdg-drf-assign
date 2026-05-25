@@ -53,7 +53,21 @@ class CommentViewSet(viewsets.ModelViewSet):
 
      #on receiving the request initializing the author of the comment as the user 
      def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+         comment = serializer.save(author=self.request.user)
+         task = comment.task_id
+         if task:
+             if task.assignee and task.assignee != self.request.user:
+                 Notification.objects.create(
+                     receiver=task.assignee,
+                     notification_type='comment_added',
+                     message=f"{self.request.user.username} commented on your assigned task '{task.title}': \"{comment.content[:50]}...\""
+                 )
+             if comment.parent and comment.parent.author != self.request.user:
+                 Notification.objects.create(
+                     receiver=comment.parent.author,
+                     notification_type='comment_added',
+                     message=f"{self.request.user.username} replied to your comment on task '{task.title}'."
+                 )
 
 class AttachmentViewSet(viewsets.ModelViewSet):
       
