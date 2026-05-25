@@ -3,8 +3,8 @@ from .models import Tag,Comment,Attachment,Notification
 class TagSerializer(serializers.ModelSerializer):
         class Meta:
                 model = Tag
-                fields = "__all__" 
-                read_only_fields = ['created_at']
+                fields = ['id', 'name', 'color', 'studio', 'created_at']
+                read_only_fields = ['studio', 'created_at']
 class CommentSerializer(serializers.ModelSerializer):
         author_username = serializers.ReadOnlyField(source = 'author.username')
         class Meta:

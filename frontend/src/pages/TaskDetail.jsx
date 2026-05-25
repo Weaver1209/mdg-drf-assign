@@ -38,7 +38,10 @@ export default function TaskDetail({ task, studioId, projectId, onTaskUpdated}) 
       <h2>{task.title}</h2>
       <p>{task.description}</p>
       <p>Priority: {task.priority}</p>
-
+      <p>Assignee: {task.assignee?.username || 'Unassigned'}</p>
+      <p>Deadline: {task.deadline ? new Date(task.deadline).toLocaleDateString() : 'None'}</p>
+      <p>Tags: {task.tags?.map(tag => tag.name).join(', ') || 'None'}</p>
+      
       {/* Error */}
       {error && <p>{error}</p>}
 

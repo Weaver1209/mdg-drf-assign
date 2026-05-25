@@ -31,6 +31,10 @@ class TagViewSet(viewsets.ModelViewSet):
                studio_id=studio_id,
                studio__studiomembership__user=self.request.user
           )
+    
+    def perform_create(self, serializer):
+          studio_id = self.kwargs.get('studio_id')
+          serializer.save(studio_id=studio_id)
 class CommentViewSet(viewsets.ModelViewSet):
 
      serializer_class = CommentSerializer

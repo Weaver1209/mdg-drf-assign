@@ -1,5 +1,7 @@
 from .models import Project,Task, WorkflowStage
 from rest_framework import serializers
+from interaction.models import Tag
+from django.contrib.auth.models import User
 
 VALID_TRANSITIONS = {
     WorkflowStage.DRAFT: [WorkflowStage.REVIEW],
@@ -17,10 +19,21 @@ class ProjectSerializer(serializers.ModelSerializer):
 
 
 class TaskSerializer(serializers.ModelSerializer):
+    tags = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=Tag.objects.all(),
+        required=False
+    )
+    assignee = serializers.PrimaryKeyRelatedField(
+        queryset=User.objects.all(),
+        required=False,
+        allow_null=True
+    )
+
     class Meta:
         model = Task
         fields = ['id', 'project', 'title', 'description', 'stage', 'priority', 
-                  'assignee', 'deadline', 'created_at', 'updated_at']
+                  'assignee', 'deadline', 'tags', 'created_at', 'updated_at']
         read_only_fields = ['project']
     def validate(self, data):
         if self.instance:

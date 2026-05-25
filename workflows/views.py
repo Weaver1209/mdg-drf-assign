@@ -1,6 +1,8 @@
 from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.filters import SearchFilter, OrderingFilter
+from django_filters.rest_framework import DjangoFilterBackend
 from studios.models import StudioMembership
 from studios.permissions import IsStudioMember, IsAdminOrLead, IsStudioMemberOrViewerReadOnly
 from .models import Project, Task, WorkflowStage
@@ -33,6 +35,10 @@ class ProjectViewSet(viewsets.ModelViewSet):
 
 class TaskViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_fields = ['priority', 'stage']
+    search_fields = ['title', 'description']
+    ordering_fields = ['created_at', 'deadline', 'priority', 'stage']
 
     def get_permissions(self):
         return [IsAuthenticated(), IsStudioMember()]

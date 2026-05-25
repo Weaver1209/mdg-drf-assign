@@ -48,7 +48,11 @@ class Task(models.Model):
         null=True, blank=True
     )
     deadline = models.DateTimeField(null=True, blank=True)
-    
+    tags = models.ManyToManyField(
+        'interaction.Tag',
+        related_name='tasks',
+        blank=True
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
