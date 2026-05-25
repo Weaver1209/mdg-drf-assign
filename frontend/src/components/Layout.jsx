@@ -2,8 +2,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import api from '../api';
 import { useEffect, useState } from 'react';
-import '../App.css';
-
+import NotificationBell from './NotificationBell.jsx';
 export default function Layout() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -42,9 +41,13 @@ export default function Layout() {
         </div>
       </div>
 
-      <div className="main-content">
-        <Outlet /> 
-      </div>
+      <div className="main-content" style={{ position: 'relative' }}>
+  <div style={{ position: 'absolute', top: '20px', right: '32px' }}>
+    <NotificationBell />
+  </div>
+  
+  <Outlet /> 
+</div>
     </div>
   );
 }

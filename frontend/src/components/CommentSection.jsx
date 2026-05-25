@@ -17,7 +17,7 @@ export default function CommentSection({ taskId }) {
   const submitComment = async (e) => {
     e.preventDefault(); // prevent the browser to refresh and set all the values to initials
 
-    await api.post('/comments/', { task_id: taskId,content,});
+    await api.post('/comments/', { 'task_id': taskId,'content': content,});
 
     setContent('');
     fetchComments();
@@ -28,7 +28,7 @@ export default function CommentSection({ taskId }) {
       <h3>Comments</h3>
 
       {comments.map((comment) => (
-        <div key={comment.id}>
+        <div key={comment.id}  className="comment-box">
           <p>{comment.content}</p>
         </div>
       ))}

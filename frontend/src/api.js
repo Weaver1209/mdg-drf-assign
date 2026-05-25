@@ -5,7 +5,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(config => {
-  const csrfToken = document.cookie.split(' ').find(c => c.startsWith('csrftoken='));
+  const csrfToken = document.cookie.split('; ').find(c => c.startsWith('csrftoken='));
   if (csrfToken) {
     config.headers['X-CSRFToken'] = csrfToken.split('=')[1];
   }

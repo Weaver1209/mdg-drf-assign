@@ -3,8 +3,8 @@
 }
 
 :root {
-  color: #1F2937;
-  background: #EEF2F7;
+  color: #1f2937;
+  background: #eef2f7;
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
@@ -16,7 +16,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background:
-    linear-gradient(180deg, #F8FAFC 0%, #EEF2F7 42%, #E8EEF6 100%);
+    linear-gradient(180deg, #f8fafc 0%, #eef2f7 42%, #e8eef6 100%);
 }
 
 button,
@@ -30,8 +30,8 @@ button {
   border: 0;
   border-radius: 8px;
   padding: 10px 14px;
-  color: #FFFFFF;
-  background: #2563EB;
+  color: #ffffff;
+  background: #2563eb;
   cursor: pointer;
   font-weight: 700;
   transition:
@@ -41,7 +41,7 @@ button {
 }
 
 button:hover {
-  background: #1D4ED8;
+  background: #1d4ed8;
   box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
   transform: translateY(-1px);
 }
@@ -54,11 +54,11 @@ input,
 textarea,
 select {
   width: 100%;
-  border: 1px solid #CBD5E1;
+  border: 1px solid #cbd5e1;
   border-radius: 8px;
   padding: 10px 12px;
   color: #111827;
-  background: #FFFFFF;
+  background: #ffffff;
   outline: none;
   transition:
     border-color 160ms ease,
@@ -68,7 +68,7 @@ select {
 input:focus,
 textarea:focus,
 select:focus {
-  border-color: #2563EB;
+  border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
 }
 
@@ -92,13 +92,13 @@ p {
 }
 
 h2 {
-  color: #0F172A;
+  color: #0f172a;
   font-size: 1.45rem;
   line-height: 1.2;
 }
 
 h3 {
-  color: #1E293B;
+  color: #1e293b;
   font-size: 1.05rem;
 }
 
@@ -107,7 +107,7 @@ p {
 }
 
 a {
-  color: #2563EB;
+  color: #2563eb;
   font-weight: 700;
   text-decoration: none;
 }
@@ -124,8 +124,9 @@ a:hover {
 
 #root::before {
   display: block;
-  margin-bottom: 22px;
-  color: #0F172A;
+  text-align: center;
+  margin-bottom: 28px;
+  color: #0f172a;
   content: "Task Workspace";
   font-size: 2rem;
   font-weight: 800;
@@ -139,27 +140,27 @@ a:hover {
   margin: 0 0 18px;
   border-radius: 8px;
   padding: 10px 12px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
 }
 
 #root > p:not(:first-of-type) {
-  color: #B45309;
-  background: #FFFBEB;
-  border: 1px solid #FDE68A;
+  color: #b45309;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
 }
 
 #root > div {
   margin-bottom: 16px;
-  border: 1px solid #DBE3EF;
+  border: 1px solid #dbe3ef;
   border-radius: 8px;
   padding: 18px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
 }
 
 #root > div:hover {
-  border-color: #BFDBFE;
+  border-color: #bfdbfe;
 }
 
 #root > div > h3 {
@@ -175,15 +176,15 @@ a:hover {
   display: grid;
   gap: 12px;
   margin: 18px 0;
-  border: 1px solid #DBE3EF;
+  border: 1px solid #dbe3ef;
   border-radius: 8px;
   padding: 18px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
 }
 
 #root > form::before {
-  color: #0F172A;
+  color: #0f172a;
   content: "Create task";
   font-size: 1.08rem;
   font-weight: 800;
@@ -196,16 +197,16 @@ a:hover {
 
 #root > div:last-child {
   margin-top: 22px;
-  border-color: #BFDBFE;
-  background: #F8FBFF;
+  border-color: #bfdbfe;
+  background: #f8fbff;
 }
 
 #root > div:last-child > div {
   margin-top: 18px;
-  border: 1px solid #DBE3EF;
+  border: 1px solid #dbe3ef;
   border-radius: 8px;
   padding: 16px;
-  background: #FFFFFF;
+  background: #ffffff;
 }
 
 #root > div:last-child > div h3 {
@@ -214,10 +215,10 @@ a:hover {
 
 #root > div:last-child > div > div {
   margin-bottom: 10px;
-  border-left: 3px solid #2563EB;
+  border-left: 3px solid #2563eb;
   border-radius: 6px;
   padding: 10px 12px;
-  background: #F8FAFC;
+  background: #f8fafc;
 }
 
 @media (max-width: 640px) {
@@ -245,17 +246,18 @@ a:hover {
     width: 100%;
   }
 }
+
 .app-container {
   display: flex;
   min-height: 100vh;
   width: 100%;
-  background: #EEF2F7;
+  background: #eef2f7;
 }
 
 .sidebar {
   width: 280px;
-  background: #FFFFFF;
-  border-right: 1px solid #DBE3EF;
+  background: #ffffff;
+  border-right: 1px solid #dbe3ef;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -268,7 +270,7 @@ a:hover {
 }
 
 .sidebar-header h2 {
-  color: #0F172A;
+  color: #0f172a;
   font-size: 1.35rem;
   font-weight: 800;
   margin-bottom: 4px;
@@ -313,23 +315,23 @@ a:hover {
 }
 
 .studio-list li:hover {
-  background: #F1F5F9;
-  color: #0F172A;
+  background: #f1f5f9;
+  color: #0f172a;
 }
 
 .sidebar-footer {
   margin-top: auto;
   padding-top: 16px;
-  border-top: 1px solid #E2E8F0;
+  border-top: 1px solid #e2e8f0;
 }
 
 .logout-button {
   width: 100%;
-  background: #EF4444;
+  background: #ef4444;
 }
 
 .logout-button:hover {
-  background: #DC2626;
+  background: #dc2626;
   box-shadow: 0 8px 18px rgba(239, 68, 68, 0.22);
 }
 
@@ -365,10 +367,10 @@ a:hover {
 }
 
 .card {
-  border: 1px solid #DBE3EF;
+  border: 1px solid #dbe3ef;
   border-radius: 8px;
   padding: 18px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
   transition: border-color 160ms ease, transform 160ms ease;
 }
@@ -378,7 +380,7 @@ a:hover {
 }
 
 .card.clickable:hover {
-  border-color: #BFDBFE;
+  border-color: #bfdbfe;
   transform: translateY(-2px);
 }
 
@@ -396,10 +398,10 @@ a:hover {
 .auth-container {
   max-width: 400px;
   margin: 80px auto;
-  border: 1px solid #DBE3EF;
+  border: 1px solid #dbe3ef;
   border-radius: 8px;
   padding: 32px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
 }
 
@@ -419,7 +421,7 @@ a:hover {
 
 .auth-container button.link {
   background: transparent;
-  color: #2563EB;
+  color: #2563eb;
   box-shadow: none;
   font-weight: 700;
   margin-top: 16px;
@@ -439,19 +441,19 @@ a:hover {
 /* Task Details Styling mapping */
 .task-detail-container {
   margin-top: 22px;
-  border: 1px solid #BFDBFE;
+  border: 1px solid #bfdbfe;
   border-radius: 8px;
   padding: 18px;
-  background: #F8FBFF;
+  background: #f8fbff;
   box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
 }
 
 .task-detail-container > div {
   margin-top: 18px;
-  border: 1px solid #DBE3EF;
+  border: 1px solid #dbe3ef;
   border-radius: 8px;
   padding: 16px;
-  background: #FFFFFF;
+  background: #ffffff;
 }
 
 .task-detail-container > div h3 {
@@ -460,10 +462,10 @@ a:hover {
 
 .task-detail-container > div > div {
   margin-bottom: 10px;
-  border-left: 3px solid #2563EB;
+  border-left: 3px solid #2563eb;
   border-radius: 6px;
   padding: 10px 12px;
-  background: #F8FAFC;
+  background: #f8fafc;
 }
 
 /* Badges */
@@ -478,21 +480,21 @@ a:hover {
   letter-spacing: 0.05em;
 }
 
-.badge-draft { background: #E2E8F0; color: #475569; }
-.badge-review { background: #DBEAFE; color: #1E40AF; }
-.badge-revision { background: #FEF3C7; color: #92400E; }
-.badge-approved { background: #D1FAE5; color: #065F46; }
-.badge-completed { background: #F3E8FF; color: #5B21B6; }
+.badge-draft { background: #e2e8f0; color: #475569; }
+.badge-review { background: #dbeafe; color: #1e40af; }
+.badge-revision { background: #fef3c7; color: #92400e; }
+.badge-approved { background: #d1fae5; color: #065f46; }
+.badge-completed { background: #f3e8ff; color: #5b21b6; }
 
-.badge-low { background: #F1F5F9; color: #475569; }
-.badge-med { background: #E0F2FE; color: #0369A1; }
-.badge-high { background: #FFEDD5; color: #C2410C; }
-.badge-urg { background: #FEE2E2; color: #991B1B; }
+.badge-low { background: #f1f5f9; color: #475569; }
+.badge-med { background: #e0f2fe; color: #0369a1; }
+.badge-high { background: #ffedd5; color: #c2410c; }
+.badge-urg { background: #fee2e2; color: #991b1b; }
 
 .error-message {
-  color: #B91C1C;
-  background: #FEF2F2;
-  border: 1px solid #FCA5A5;
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
   border-radius: 8px;
   padding: 10px 12px;
   margin-bottom: 16px;
@@ -517,18 +519,18 @@ a:hover {
 
 .member-list li {
   padding: 12px 16px;
-  background: #FFFFFF;
-  border: 1px solid #DBE3EF;
+  background: #ffffff;
+  border: 1px solid #dbe3ef;
   border-radius: 8px;
   font-size: 0.95rem;
 }
 
 /* Forms inside containers */
 .form-card {
-  border: 1px solid #DBE3EF;
+  border: 1px solid #dbe3ef;
   border-radius: 8px;
   padding: 18px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
   margin-bottom: 20px;
 }
@@ -541,27 +543,27 @@ a:hover {
   margin: 0 0 18px;
   border-radius: 8px;
   padding: 10px 12px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
 }
 
 .main-content > p:not(:first-of-type) {
-  color: #B45309;
-  background: #FFFBEB;
-  border: 1px solid #FDE68A;
+  color: #b45309;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
 }
 
 .main-content > div.clickable, .main-content .task-card {
   margin-bottom: 16px;
-  border: 1px solid #DBE3EF;
+  border: 1px solid #dbe3ef;
   border-radius: 8px;
   padding: 18px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
 }
 
 .main-content > div.clickable:hover, .main-content .task-card:hover {
-  border-color: #BFDBFE;
+  border-color: #bfdbfe;
 }
 
 .main-content > div.clickable > h3, .main-content .task-card > h3 {
@@ -576,15 +578,15 @@ a:hover {
   display: grid;
   gap: 12px;
   margin: 18px 0;
-  border: 1px solid #DBE3EF;
+  border: 1px solid #dbe3ef;
   border-radius: 8px;
   padding: 18px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
 }
 
 .main-content > form::before {
-  color: #0F172A;
+  color: #0f172a;
   content: "Create task";
   font-size: 1.08rem;
   font-weight: 800;
@@ -598,16 +600,16 @@ a:hover {
 
 .main-content > div:last-child {
   margin-top: 22px;
-  border-color: #BFDBFE;
-  background: #F8FBFF;
+  border-color: #bfdbfe;
+  background: #f8fbff;
 }
 
 .main-content > div:last-child > div {
   margin-top: 18px;
-  border: 1px solid #DBE3EF;
+  border: 1px solid #dbe3ef;
   border-radius: 8px;
   padding: 16px;
-  background: #FFFFFF;
+  background: #ffffff;
 }
 
 .main-content > div:last-child > div h3 {
@@ -616,8 +618,52 @@ a:hover {
 
 .main-content > div:last-child > div > div {
   margin-bottom: 10px;
-  border-left: 3px solid #2563EB;
+  border-left: 3px solid #2563eb;
   border-radius: 6px;
   padding: 10px 12px;
-  background: #F8FAFC;
+  background: #f8fafc;
+}
+
+.notification-wrapper {
+  position: fixed;
+  top: 24px;
+  right: 32px;
+  z-index: 1000;
+}
+
+.notification-dropdown {
+  width: 320px;
+  max-height: 420px;
+  overflow-y: auto;
+  margin-top: 10px;
+  border: 1px solid #dbe3ef;
+  border-radius: 12px;
+  padding: 14px;
+  background: #ffffff;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+}
+
+.task-card {
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.task-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(37, 99, 235, 0.12);
+}
+
+.task-detail {
+  margin-top: 28px;
+  border: 2px solid #bfdbfe;
+  background: #f8fbff;
+}
+
+.comment-box {
+  margin-bottom: 10px;
+  border-left: 3px solid #2563eb;
+  border-radius: 6px;
+  padding: 10px 12px;
+  background: #f8fafc;
 }

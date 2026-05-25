@@ -7,6 +7,7 @@ import CreateStudio from './pages/CreateStudio';
 import StudioDetail from './pages/StudioDetail';
 import ProjectList from './pages/ProjectList';
 import TaskBoard from './pages/TaskBoard';
+import NotificationBell from './components/NotificationBell';
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -24,7 +25,6 @@ function App() {
 
           <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
             <Route path="studios/create" element={<CreateStudio />} />
-            
             <Route path="studio/:studioId" element={<StudioDetail />} />
             <Route path="studio/:studioId/projects" element={<ProjectList />} />
             <Route path="studio/:studioId/project/:projectId/tasks" element={<TaskBoard />} />
