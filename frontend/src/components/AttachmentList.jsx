@@ -1,7 +1,7 @@
 import { useEffect,useState } from "react";
 import api from '../api';
 
-export default function AttachmentList({taskId}){
+export default function AttachmentList({ taskId, studioId }){
 
     const [attachments, setAttachment] = useState([]);
     const [label,setLabel] = useState('');
@@ -9,7 +9,7 @@ export default function AttachmentList({taskId}){
     const [file,setFile] = useState(null);
 
     const fetchAttachments = async () => {
-         const res = await api.get(`/attachments/?task_id=${taskId}`);
+         const res = await api.get(`/studios/${studioId}/attachments/?task_id=${taskId}`);
          setAttachment(res.data)
         }
     
@@ -33,7 +33,7 @@ export default function AttachmentList({taskId}){
         formData.append('file_size', file.size);
         }
 
-        await api.post('/attachments/', formData);
+        await api.post(`/studios/${studioId}/attachments/`, formData);
 
         setLabel('');
         setFile(null);

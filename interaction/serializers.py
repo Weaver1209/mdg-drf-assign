@@ -6,9 +6,10 @@ class TagSerializer(serializers.ModelSerializer):
                 fields = "__all__" 
                 read_only_fields = ['created_at']
 class CommentSerializer(serializers.ModelSerializer):
+        author_username = serializers.ReadOnlyField(source = 'author.username')
         class Meta:
                 model = Comment
-                fields = '__all__'
+                fields = ['id', 'task_id', 'author', 'author_username', 'content', 'created_at', 'updated_at']
                 read_only_fields = ['author', 'created_at', 'updated_at']
 class AttachmentSerializer(serializers.ModelSerializer):
         class Meta:

@@ -56,8 +56,8 @@ export default function TaskDetail({ task, studioId, projectId, onTaskUpdated}) 
           ))}
 
       </select>
-      <CommentSection taskId={task.id} />
-      <AttachmentList taskId={task.id} />
+      <CommentSection taskId={task.id} studioId={studioId}/>
+      <AttachmentList taskId={task.id} studioId={studioId} />
 
     </div>
   );

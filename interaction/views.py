@@ -17,17 +17,31 @@ from rest_framework.filters import (
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import status
- 
+
+from studios.permissions import IsStudioMember
 # Create your views here.
 class TagViewSet(viewsets.ModelViewSet):
-    queryset = Tag.objects.all() #here we tell which data it can interact with here we are allowing it for whole of the data
+    
     serializer_class = TagSerializer #here we define which serializer to use for python object and json object interconversion
-    permission_classes = [IsAuthenticated] #restricting the permission to access to only authenticated user only
+    permission_classes = [IsAuthenticated,IsStudioMember] #restricting the permission to access to only authenticated user and the studio members only
+    
+    def get_queryset(self):
+          studio_id = self.kwargs.get('studio_id')
+          return Tag.objects.filter(
+               studio_id=studio_id,
+               studio__studiomembership__user=self.request.user
+          )
 class CommentViewSet(viewsets.ModelViewSet):
-     queryset = Comment.objects.all()
-     serializer_class = CommentSerializer
-     permission_classes = [IsAuthenticated]
 
+     serializer_class = CommentSerializer
+     permission_classes = [IsAuthenticated,IsStudioMember]
+
+     def get_queryset(self):
+          studio_id = self.kwargs.get('studio_id')
+          return Comment.objects.filter(
+               task_id__project__studio_id=studio_id,
+               task_id__project__studio__studiomembership__user=self.request.user
+          )
      filter_backends = [ DjangoFilterBackend, SearchFilter, OrderingFilter] #activates filtering , searching , and ordering for this viewset
      filterset_fields = ['task_id','author'] #to filter the database based on the task_id or author 
      search_fields = ['content'] # to search on the basis of the content
@@ -38,11 +52,17 @@ class CommentViewSet(viewsets.ModelViewSet):
         serializer.save(author=self.request.user)
 
 class AttachmentViewSet(viewsets.ModelViewSet):
-      queryset = Attachment.objects.all()
+      
       serializer_class = AttachmentSerializer
       
-      permission_classes = [IsAuthenticated]
+      permission_classes = [IsAuthenticated,IsStudioMember]
       
+      def get_queryset(self):
+           studio_id = self.kwargs.get('studio_id')
+           return Attachment.objects.filter(
+               task_id__project__studio_id=studio_id,
+               task_id__project__studio__studiomembership__user=self.request.user
+           )
       parser_classes = [MultiPartParser, FormParser] #with the help of this the endpoint can accept different files not only json objects only
       
       filter_backends = [DjangoFilterBackend]
