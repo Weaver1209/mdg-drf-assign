@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from studios.views import LoginView 
+from studios.views import LoginView , LogoutView
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/login/', LoginView.as_view()),
+    path('api/logout/', LogoutView.as_view()),
     path('api/', include('studios.urls')),
     path('api/', include('workflows.urls')),
     path('api/',include('interaction.urls'))

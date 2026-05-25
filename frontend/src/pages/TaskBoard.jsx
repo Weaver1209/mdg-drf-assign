@@ -41,9 +41,7 @@ export default function TaskBoard() {
        const url = queryString 
          ? `/studios/${studioId}/projects/${projectId}/tasks/?${queryString}` 
          : `/studios/${studioId}/projects/${projectId}/tasks/`;
-       console.log('Fetching tasks from:', url);
        const res = await api.get(url);
-       console.log('Tasks fetched:', res.data);
        setTasks(res.data); 
     }
     catch (err) {
@@ -71,9 +69,8 @@ export default function TaskBoard() {
                   assignee: Number.isInteger(assigneeId) ? assigneeId : null,
                   tags: validTagIds
                 };
-                console.log('Creating task with payload:', payload);
+
                 const res = await api.post(`/studios/${studioId}/projects/${projectId}/tasks/`, payload);
-                console.log('Task created:', res.data);
                 setTitle('');
                 setDescription('');
                 setPriority('MED');
@@ -93,7 +90,6 @@ export default function TaskBoard() {
     try {
       const res = await api.get(`/studios/${studioId}/members/`);
       setMemberOptions(res.data);
-      console.log('Members loaded:', res.data);
     } catch (err) {
       console.error('Failed to load members', err);
     }
@@ -103,7 +99,6 @@ export default function TaskBoard() {
     try {
       const res = await api.get(`/studios/${studioId}/tags/`);
       setTagOptions(res.data);
-      console.log('Tags loaded:', res.data);
     } catch (err) {
       console.error('Failed to load tags', err);
     }
@@ -120,7 +115,7 @@ export default function TaskBoard() {
         name: newTagName,
         color: newTagColor
       });
-      console.log('Tag created:', res.data);
+
       setNewTagName('');
       setNewTagColor('#FF5733');
       fetchTagsData();

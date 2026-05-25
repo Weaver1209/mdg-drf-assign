@@ -68,7 +68,7 @@ instance/
 
 # Scrapy stuff:
 .scrapy
-
+.antigravitycli/
 # Sphinx documentation
 docs/_build/
 

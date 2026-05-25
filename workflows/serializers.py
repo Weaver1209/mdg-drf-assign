@@ -2,7 +2,9 @@ from .models import Project,Task, WorkflowStage
 from rest_framework import serializers
 from interaction.models import Tag
 from django.contrib.auth.models import User
-
+from studios.models import StudioMembership
+from studios.serializers import UserSerializer
+from interaction.serializers import TagSerializer
 VALID_TRANSITIONS = {
     WorkflowStage.DRAFT: [WorkflowStage.REVIEW],
     WorkflowStage.REVIEW: [WorkflowStage.APPROVED, WorkflowStage.REVISION],
@@ -50,7 +52,7 @@ class TaskSerializer(serializers.ModelSerializer):
         return data
     def validate_assignee(self, value):
         if value:
-            project_id = self.instance.project_id if self.instance else self.initial_data.get('project')
+            project_id = self.instance.project_id if self.instance else self.context['view'].kwargs.get('project_id')
             project = Project.objects.get(id=project_id)
             membership = StudioMembership.objects.filter(user=value, studio=project.studio).first()
             if not membership:
@@ -58,3 +60,16 @@ class TaskSerializer(serializers.ModelSerializer):
             if membership.role == 'VIEWER':
                 raise serializers.ValidationError("Cannot assign tasks to a Client Viewer.")
         return value
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+
+        
+        if instance.assignee:
+            representation["assignee"] = UserSerializer(instance.assignee).data
+        else:
+            representation["assignee"] = None
+
+        representation["tags"] = TagSerializer(
+            instance.tags.all(), many=True
+        ).data
+        return representation

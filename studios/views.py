@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login , logout as django_logout
 from django.contrib.auth.models import User
 from .models import Studio, StudioMembership
 from .serializers import StudioSerializer, UserSerializer, StudioMembershipSerializer
@@ -37,6 +37,12 @@ class LoginView(APIView):
             return Response({'message': 'Login successful'}, status=status.HTTP_200_OK)
         
         return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+class LogoutView(APIView):
+        permission_classes = [IsAuthenticated]
+
+        def post(self, request):
+            django_logout(request)
+            return Response({'message': 'Logged out successfully'}, status=status.HTTP_200_OK)
 class StudioViewSet(viewsets.ModelViewSet):
     serializer_class = StudioSerializer
     permission_classes = [IsAuthenticated]
