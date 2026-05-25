@@ -36,7 +36,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
 class TaskViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_fields = ['priority', 'stage']
+    filterset_fields = ['priority', 'stage','assignee']
     search_fields = ['title', 'description']
     ordering_fields = ['created_at', 'deadline', 'priority', 'stage']
 
@@ -50,6 +50,3 @@ class TaskViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(project_id=self.kwargs.get('project_id'))
-    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    filterset_fields = ['stage', 'priority', 'assignee']
-    search_fields = ['title', 'description']
